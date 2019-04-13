@@ -179,15 +179,6 @@ public class PedidoService {
 		pedido.setTotal(pedidoDTO.getTotal());
 		
 		try {
-			Estado estado = new Estado();
-			estado.setId(pedidoDTO.getEstado().getId());
-			pedido.setEstado(estado);
-		
-		} catch(Exception e){
-			System.out.println(e.getMessage());
-		}
-		
-		try {
 			List<Detalle> detalle = new ArrayList<>();
 			for(DetalleDTO detalleDTO : pedidoDTO.getDetalle()){
 				Detalle detalleTemp = new Detalle();
@@ -201,7 +192,7 @@ public class PedidoService {
 		
 		try {
 			Estado estado = new Estado();
-			estado.setId(pedidoDTO.getId());
+			estado.setId(pedidoDTO.getEstado().getId());
 			pedido.setEstado(estado);
 		
 		} catch(Exception e){
@@ -219,9 +210,6 @@ public class PedidoService {
 		} catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-		
-		
-		
 		
 		pedidoRepository.save(pedido);
 		
@@ -267,15 +255,6 @@ public class PedidoService {
 				detalleTemp.setId(detalleDTO.getId());	detalle.add(detalleTemp);
 		}
 		pedido.setDetalle(detalle);
-		
-		} catch(Exception e){
-			System.out.println(e.getMessage());
-		}
-		
-		try {
-			Estado estado = new Estado();
-			estado.setId(pedidoDTO.getId());
-			pedido.setEstado(estado);
 		
 		} catch(Exception e){
 			System.out.println(e.getMessage());

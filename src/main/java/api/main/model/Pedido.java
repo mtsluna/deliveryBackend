@@ -12,7 +12,7 @@ public class Pedido extends Comprobante{
 	@Column(name = "pedido_tipoenvio")
 	private String tipoEnvio;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "fk_posee_estado")
 	private Estado estado;
 	@OneToMany
