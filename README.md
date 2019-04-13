@@ -48,7 +48,19 @@ Y contendra una estructura similiar a esta:
 }
 ```
 
-## Documentacion de funcionalidades
+## Documentacion de funcionalidades especiales
 
-*En construcción...*
+**Consulta de email**
+
+Petición HTTP:
+```
+https://apirestdelivery.herokuapp.com/api/v1/usuario/existemail/mtsluna@gmail.com
+```
+Respuesta:
+```json
+{
+  "emailExist": "true"
+}
+```
+En caso de que exista devuelve **true**, caso contrario devuelve **false**
 
