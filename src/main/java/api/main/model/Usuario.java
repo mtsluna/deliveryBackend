@@ -26,10 +26,10 @@ public class Usuario{
 	@Column(name = "usuario_password")
 	private String password;
 	
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.DETACH})
 	@JoinColumn(name = "fk_posee_domicilio")
 	private Domicilio domicilio;
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.DETACH})
 	@JoinColumn(name = "fk_posee_imagen")
 	private Imagen imagen;
 	

@@ -215,7 +215,7 @@ public class UsuarioClienteService {
 		
 		try {
 			Domicilio domicilio = new Domicilio();
-			domicilio.setId(usuarioClienteDTO.getId());
+			domicilio.setId(usuarioClienteDTO.getDomicilio().getId());
 			usuarioCliente.setDomicilio(domicilio);
 		
 		} catch(Exception e){
@@ -224,7 +224,7 @@ public class UsuarioClienteService {
 		
 		try {
 			Imagen imagen = new Imagen();
-			imagen.setId(usuarioClienteDTO.getId());
+			imagen.setId(usuarioClienteDTO.getImagen().getId());
 			usuarioCliente.setImagen(imagen);
 		
 		} catch(Exception e){
@@ -291,7 +291,7 @@ public class UsuarioClienteService {
 		
 		try {
 			Domicilio domicilio = new Domicilio();
-			domicilio.setId(usuarioClienteDTO.getId());
+			domicilio.setId(usuarioClienteDTO.getDomicilio().getId());
 			usuarioCliente.setDomicilio(domicilio);
 		
 		} catch(Exception e){
@@ -300,7 +300,7 @@ public class UsuarioClienteService {
 		
 		try {
 			Imagen imagen = new Imagen();
-			imagen.setId(usuarioClienteDTO.getId());
+			imagen.setId(usuarioClienteDTO.getImagen().getId());
 			usuarioCliente.setImagen(imagen);
 		
 		} catch(Exception e){
