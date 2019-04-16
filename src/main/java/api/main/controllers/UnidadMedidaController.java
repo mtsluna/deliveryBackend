@@ -2,6 +2,7 @@ package api.main.controllers;
 import java.util.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ public class UnidadMedidaController {
 	 * @since 1.0
 	 */
 	@GetMapping("/")
+	@CrossOrigin(origins = "*")
 	public List<UnidadMedidaDTO> getAll() {
 		
 		return ResponseEntity.status(200).body(unidadMedidaService.getAll()).getBody();
@@ -45,6 +47,7 @@ public class UnidadMedidaController {
 	 * @since 1.0
 	 */
 	@GetMapping("/{id}")
+	@CrossOrigin(origins = "*")
 	public UnidadMedidaDTO getOne(@PathVariable int id) {
 		
 		return ResponseEntity.status(200).body(unidadMedidaService.getOne(id)).getBody();
@@ -58,6 +61,7 @@ public class UnidadMedidaController {
 	 * @since 1.0
 	 */
 	@PostMapping("/")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity save(@RequestBody UnidadMedidaDTO t) {
 		
 		UnidadMedidaDTO temp = unidadMedidaService.save(t);		
@@ -87,6 +91,7 @@ public class UnidadMedidaController {
 	 * @since 1.0
 	 */
 	@PutMapping("/{id}")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity update(@RequestBody UnidadMedidaDTO t, @PathVariable int id) {
 		
 		UnidadMedidaDTO temp = unidadMedidaService.update(t, id);
@@ -115,6 +120,7 @@ public class UnidadMedidaController {
 	 * @since 1.0
 	 */
 	@DeleteMapping("/{id}")
+	@CrossOrigin(origins = "*")
 	public ResponseEntity delete(@PathVariable int id) {
 	
 		boolean det = unidadMedidaService.delete(id);
