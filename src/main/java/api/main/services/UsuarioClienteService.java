@@ -64,8 +64,18 @@ public class UsuarioClienteService {
 			}
 			
 			try {
-				DomicilioDTO domicilio = new DomicilioDTO();
+				DomicilioDTO domicilio = new DomicilioDTO();		
 				domicilio.setId(object2.getDomicilio().getId());
+				domicilio.setCalle(object2.getDomicilio().getCalle());
+				domicilio.setNumero(object2.getDomicilio().getNumero());
+				domicilio.setPiso(object2.getDomicilio().getPiso());
+				domicilio.setDepartamento(object2.getDomicilio().getDepartamento());
+				domicilio.setLatitud(object2.getDomicilio().getLatitud());
+				domicilio.setLongitud(object2.getDomicilio().getLongitud());
+				domicilio.setCP(object2.getDomicilio().getCP());
+				LocalidadDTO loc = new LocalidadDTO();
+				loc.setId(object2.getDomicilio().getLocalidad().getId());
+				domicilio.setLocalidad(loc);
 				object.setDomicilio(domicilio);
 			
 			} catch(Exception e){
@@ -140,8 +150,18 @@ public class UsuarioClienteService {
 			}
 			
 			try {
-				DomicilioDTO domicilio = new DomicilioDTO();
+				DomicilioDTO domicilio = new DomicilioDTO();		
 				domicilio.setId(object2.getDomicilio().getId());
+				domicilio.setCalle(object2.getDomicilio().getCalle());
+				domicilio.setNumero(object2.getDomicilio().getNumero());
+				domicilio.setPiso(object2.getDomicilio().getPiso());
+				domicilio.setDepartamento(object2.getDomicilio().getDepartamento());
+				domicilio.setLatitud(object2.getDomicilio().getLatitud());
+				domicilio.setLongitud(object2.getDomicilio().getLongitud());
+				domicilio.setCP(object2.getDomicilio().getCP());
+				LocalidadDTO loc = new LocalidadDTO();
+				loc.setId(object2.getDomicilio().getLocalidad().getId());
+				domicilio.setLocalidad(loc);
 				object.setDomicilio(domicilio);
 			
 			} catch(Exception e){
