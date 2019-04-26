@@ -77,6 +77,67 @@ public class ArticuloService {
 	
 	}
 	/**
+	 * This method transform all entities 'Articulo' in 'ArticuloDTO' in the database
+	 * @return entities 'Articulo' transformed in 'Articulo'DTO (Data transference Object)
+	 * @since 1.0
+	 */
+	public List<ArticuloDTO> getAllNoInsumos(boolean esInsumo) {
+	
+		List<ArticuloDTO> result = new ArrayList<>();
+	
+		for(Articulo object2 : articuloRepository.getAllNoInsumos(esInsumo)){
+			ArticuloDTO object = new ArticuloDTO();
+			object.setId(object2.getId());
+			object.setNombre(object2.getNombre());
+			object.setDescripcion(object2.getDescripcion());
+			object.setPrecioCompra(object2.getPrecioCompra());
+			object.setStock(object2.getStock());
+			object.setStockMinimo(object2.getStockMinimo());
+			object.setStockMaximo(object2.getStockMaximo());
+			object.setEsInsumo(object2.getEsInsumo());
+			object.setPrecioVenta(object2.getPrecioVenta());
+			
+			try {
+				ArticuloCategoriaDTO articuloCategoria = new ArticuloCategoriaDTO();
+				articuloCategoria.setId(object2.getCategoria().getId());
+				articuloCategoria.setNombre(object2.getCategoria().getNombre());
+				articuloCategoria.setDescripcion(object2.getCategoria().getDescripcion());
+				object.setCategoria(articuloCategoria);
+			
+			} catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				UnidadMedidaDTO unidadMedida = new UnidadMedidaDTO();
+				unidadMedida.setId(object2.getUnidadMedida().getId());
+				unidadMedida.setNombre(object2.getUnidadMedida().getNombre());
+				unidadMedida.setAbreviatura(object2.getUnidadMedida().getAbreviatura());
+				object.setUnidadMedida(unidadMedida);
+			
+			} catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				ImagenDTO imagen = new ImagenDTO();
+				imagen.setId(object2.getImagen().getId());
+				imagen.setUrl(object2.getImagen().getUrl());
+				object.setImagen(imagen);
+			
+			} catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			
+			
+			
+			result.add(object);		
+		}
+	
+		return result;
+	
+	}
+	/**
 	 * This method transform an entity 'Articulo' in 'ArticuloDTO' in the database
 	 * @return entity 'Articulo' transformed in 'ArticuloDTO' (Data transference Object)
 	 * @since 1.0

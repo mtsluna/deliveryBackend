@@ -39,6 +39,19 @@ public class ArticuloController {
 		return ResponseEntity.status(200).body(articuloService.getAll()).getBody();
 		
 	}
+	
+	/**
+	 * This method return all entities 'Articulo' in the database
+	 * @return entities 'Articulo' transformed in DTO's (Data transference Object)
+	 * @since 1.0
+	 */
+	@GetMapping("/esInsumo/{esInsumo}")
+	@CrossOrigin(origins = "*")
+	public List<ArticuloDTO> getAllNoInsumos(@PathVariable boolean esInsumo) {
+		
+		return ResponseEntity.status(200).body(articuloService.getAllNoInsumos(esInsumo)).getBody();
+		
+	}
 
 	/**
 	 * This method return only entity 'Articulo' that match with the id in the database
