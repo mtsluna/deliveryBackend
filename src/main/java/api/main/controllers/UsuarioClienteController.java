@@ -53,6 +53,20 @@ public class UsuarioClienteController {
 		return ResponseEntity.status(200).body(usuarioClienteService.getOne(id)).getBody();
 		
 	}
+	
+	/**
+	 * This method return only entity 'UsuarioCliente' that match with the id in the database
+	 * @param id this is a index to find in the DB.
+	 * @return entity 'UsuarioCliente' that match with the id transformed in DTO's (Data transference Object).
+	 * @since 1.0
+	 */
+	@GetMapping("searchByEmail/{email}")
+	@CrossOrigin(origins = "*")
+	public UsuarioClienteDTO getSearchByEmail(@PathVariable String email) {
+		
+		return ResponseEntity.status(200).body(usuarioClienteService.searchByEmail(email)).getBody();
+		
+	}
 
 	/**
 	 * This method save an entity 'UsuarioClienteDTO' in the database

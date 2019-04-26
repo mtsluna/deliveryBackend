@@ -191,6 +191,97 @@ public class UsuarioClienteService {
 	
 	}
 	/**
+	 * This method transform an entity 'UsuarioCliente' in 'UsuarioClienteDTO' in the database
+	 * @return entity 'UsuarioCliente' transformed in 'UsuarioClienteDTO' (Data transference Object)
+	 * @since 1.0
+	 */
+	public UsuarioClienteDTO searchByEmail(String email) {
+	
+		Optional<UsuarioCliente> aOptional = usuarioClienteRepository.searchByEmail(email);
+		UsuarioClienteDTO object = new UsuarioClienteDTO();
+	
+		try {	
+	
+			UsuarioCliente object2 = aOptional.get();
+			object.setId(object2.getId());
+			object.setFechaNacimiento(object2.getFechaNacimiento());
+			object.setSexo(object2.getSexo());
+			object.setEmail(object2.getEmail());
+			object.setDni(object2.getDni());
+			object.setNombre(object2.getNombre());
+			object.setApellido(object2.getApellido());
+			object.setTelefono(object2.getTelefono());
+			object.setPassword(object2.getPassword());
+			
+			try {
+				List<ComprobanteDTO> comprobante = new ArrayList<>();
+				for(Comprobante comprobanteInternal : object2.getComprobantes()){
+					ComprobanteDTO comprobanteDTO = new ComprobanteDTO();
+					comprobanteDTO.setId(comprobanteInternal.getId());	comprobanteDTO.setFecha(comprobanteInternal.getFecha());
+						comprobanteDTO.setMontoDescuento(comprobanteInternal.getMontoDescuento());
+						comprobanteDTO.setTotal(comprobanteInternal.getTotal());
+						comprobante.add(comprobanteDTO);
+			}
+			object.setComprobantes(comprobante);
+			
+			} catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				List<ComprobanteDTO> comprobante = new ArrayList<>();
+				for(Comprobante comprobanteInternal : object2.getComprobantes()){
+					ComprobanteDTO comprobanteDTO = new ComprobanteDTO();
+					comprobanteDTO.setId(comprobanteInternal.getId());
+				comprobante.add(comprobanteDTO);
+			}
+			object.setComprobantes(comprobante);
+			} catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				DomicilioDTO domicilio = new DomicilioDTO();		
+				domicilio.setId(object2.getDomicilio().getId());
+				domicilio.setCalle(object2.getDomicilio().getCalle());
+				domicilio.setNumero(object2.getDomicilio().getNumero());
+				domicilio.setPiso(object2.getDomicilio().getPiso());
+				domicilio.setDepartamento(object2.getDomicilio().getDepartamento());
+				domicilio.setLatitud(object2.getDomicilio().getLatitud());
+				domicilio.setLongitud(object2.getDomicilio().getLongitud());
+				domicilio.setCP(object2.getDomicilio().getCP());
+				LocalidadDTO loc = new LocalidadDTO();
+				loc.setId(object2.getDomicilio().getLocalidad().getId());
+				domicilio.setLocalidad(loc);
+				object.setDomicilio(domicilio);
+			
+			} catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				ImagenDTO imagen = new ImagenDTO();
+				imagen.setId(object2.getImagen().getId());
+				object.setImagen(imagen);
+			
+			} catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			
+			
+			
+	
+		} catch (Exception e) {
+	
+			System.out.println("No existe el id");
+			
+		}
+		
+		return object;
+	
+	
+	}
+	/**
 	 * This method transform an entity 'UsuarioClienteDTO' in the entity 'UsuarioCliente' for save it in the database
 	 * @param usuarioClienteDTO it is an object DTO that comes from controller that will transformed in an entity
 	 * @return entities 'UsuarioClienteDTO'.
