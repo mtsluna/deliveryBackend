@@ -161,6 +161,9 @@ public class UsuarioClienteService {
 				domicilio.setCP(object2.getDomicilio().getCP());
 				LocalidadDTO loc = new LocalidadDTO();
 				loc.setId(object2.getDomicilio().getLocalidad().getId());
+				ProvinciaDTO pro = new ProvinciaDTO();
+				pro.setId(object2.getDomicilio().getLocalidad().getProvincia().getId());
+				loc.setProvincia(pro);
 				domicilio.setLocalidad(loc);
 				object.setDomicilio(domicilio);
 			
@@ -252,6 +255,9 @@ public class UsuarioClienteService {
 				domicilio.setCP(object2.getDomicilio().getCP());
 				LocalidadDTO loc = new LocalidadDTO();
 				loc.setId(object2.getDomicilio().getLocalidad().getId());
+				ProvinciaDTO pro = new ProvinciaDTO();
+				pro.setId(object2.getDomicilio().getLocalidad().getProvincia().getId());
+				loc.setProvincia(pro);
 				domicilio.setLocalidad(loc);
 				object.setDomicilio(domicilio);
 			
