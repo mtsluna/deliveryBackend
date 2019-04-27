@@ -333,6 +333,16 @@ public class UsuarioClienteService {
 		try {
 			Domicilio domicilio = new Domicilio();
 			domicilio.setId(usuarioClienteDTO.getDomicilio().getId());
+			domicilio.setCalle(usuarioClienteDTO.getDomicilio().getCalle());
+			domicilio.setNumero(usuarioClienteDTO.getDomicilio().getNumero());
+			domicilio.setPiso(usuarioClienteDTO.getDomicilio().getPiso());
+			domicilio.setCP(usuarioClienteDTO.getDomicilio().getCP());
+			domicilio.setDepartamento(usuarioClienteDTO.getDomicilio().getDepartamento());
+			domicilio.setLatitud(usuarioClienteDTO.getDomicilio().getLatitud());
+			domicilio.setLongitud(usuarioClienteDTO.getDomicilio().getLongitud());
+			Localidad localidad = new Localidad();
+			localidad.setId(usuarioClienteDTO.getDomicilio().getLocalidad().getId());
+			domicilio.setLocalidad(localidad);
 			usuarioCliente.setDomicilio(domicilio);
 		
 		} catch(Exception e){
@@ -348,12 +358,11 @@ public class UsuarioClienteService {
 			System.out.println(e.getMessage());
 		}
 		
-		
-		
-		
 		usuarioClienteRepository.save(usuarioCliente);
 		
 		usuarioClienteDTO.setId(usuarioCliente.getId());
+		usuarioClienteDTO.getDomicilio().setId(usuarioCliente.getDomicilio().getId());	
+		
 		return usuarioClienteDTO;
 		
 	}
@@ -409,6 +418,16 @@ public class UsuarioClienteService {
 		try {
 			Domicilio domicilio = new Domicilio();
 			domicilio.setId(usuarioClienteDTO.getDomicilio().getId());
+			domicilio.setCalle(usuarioClienteDTO.getDomicilio().getCalle());
+			domicilio.setNumero(usuarioClienteDTO.getDomicilio().getNumero());
+			domicilio.setPiso(usuarioClienteDTO.getDomicilio().getPiso());
+			domicilio.setCP(usuarioClienteDTO.getDomicilio().getCP());
+			domicilio.setDepartamento(usuarioClienteDTO.getDomicilio().getDepartamento());
+			domicilio.setLatitud(usuarioClienteDTO.getDomicilio().getLatitud());
+			domicilio.setLongitud(usuarioClienteDTO.getDomicilio().getLongitud());
+			Localidad localidad = new Localidad();
+			localidad.setId(usuarioClienteDTO.getDomicilio().getLocalidad().getId());
+			domicilio.setLocalidad(localidad);
 			usuarioCliente.setDomicilio(domicilio);
 		
 		} catch(Exception e){
@@ -422,13 +441,11 @@ public class UsuarioClienteService {
 		
 		} catch(Exception e){
 			System.out.println(e.getMessage());
-		}
-		
-		
-		
+		}	
 		
 		usuarioClienteRepository.save(usuarioCliente);
 		
+		usuarioClienteDTO.getDomicilio().setId(usuarioCliente.getDomicilio().getId());		
 		usuarioClienteDTO.setId(usuarioCliente.getId());
 		
 		} catch(Exception e) {
