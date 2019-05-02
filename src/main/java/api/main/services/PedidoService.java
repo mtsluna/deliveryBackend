@@ -182,7 +182,10 @@ public class PedidoService {
 			List<Detalle> detalle = new ArrayList<>();
 			for(DetalleDTO detalleDTO : pedidoDTO.getDetalle()){
 				Detalle detalleTemp = new Detalle();
-				detalleTemp.setId(detalleDTO.getId());	detalle.add(detalleTemp);
+				detalleTemp.setId(detalleDTO.getId());	
+				detalleTemp.getArticulo().setId(detalleDTO.getArticulo().getId());
+				detalleTemp.getPlato().setId(detalleDTO.getPlato().getId());
+				detalle.add(detalleTemp);
 		}
 		pedido.setDetalle(detalle);
 		

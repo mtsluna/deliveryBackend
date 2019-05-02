@@ -12,4 +12,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Query(value = "SELECT COUNT(usuario_email) FROM api_usuario WHERE usuario_email = ?1", nativeQuery = true)
 	public String existEmail(String email);
 	
+	@Query(value = "SELECT fk_posee_rol FROM api_usuario WHERE usuario_email = ?1", nativeQuery = true)
+	public String rolByEmail(String email);
+	
 }

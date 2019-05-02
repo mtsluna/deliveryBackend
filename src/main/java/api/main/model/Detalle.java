@@ -14,10 +14,10 @@ public class Detalle{
 	@Column(name = "detalle_cantidad")
 	private int cantidad;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "fk_posee_plato")
 	private Plato plato;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "fk_posee_articulo")
 	private Articulo articulo;
 	

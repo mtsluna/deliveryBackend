@@ -26,4 +26,10 @@ public class UsuarioController {
 		return usuarioService.existEmail(email);
 	}
 	
+	@GetMapping("/rolByEmail/{email}")
+	@CrossOrigin(origins = "*")
+	public String rolByEmail(@PathVariable String email) {
+		return usuarioService.rolByEmail(email);
+	}
+	
 }
