@@ -145,3 +145,22 @@ Respuesta:
   }
 ]
 ```
+
+**Consulta de rol**
+
+Petición HTTP:
+```
+curl -GET https://apirestdelivery.herokuapp.com/api/v1/usuario/rolByEmail/mtsluna@gmail.com
+```
+En caso de que posea rol devuelve: 
+```json
+{
+  "rol": "Usuario comun"
+}
+```
+En caso de que no posea rol devuelve: 
+```json
+{
+  "rol": "null"
+}
+```
