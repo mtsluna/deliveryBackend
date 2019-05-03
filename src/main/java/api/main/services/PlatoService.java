@@ -34,8 +34,35 @@ public class PlatoService {
 				List<PlatoDetalleDTO> platoDetalle = new ArrayList<>();
 				for(PlatoDetalle platoDetalleInternal : object2.getDetalles()){
 					PlatoDetalleDTO platoDetalleDTO = new PlatoDetalleDTO();
-					platoDetalleDTO.setId(platoDetalleInternal.getId());	platoDetalleDTO.setCantidad(platoDetalleInternal.getCantidad());
-						platoDetalle.add(platoDetalleDTO);
+					platoDetalleDTO.setId(platoDetalleInternal.getId());	
+					platoDetalleDTO.setCantidad(platoDetalleInternal.getCantidad());
+					
+					ArticuloDTO articulo = new ArticuloDTO();
+					articulo.setDescripcion(platoDetalleInternal.getArticulo().getDescripcion());
+					articulo.setEsInsumo(platoDetalleInternal.getArticulo().getEsInsumo());
+					articulo.setId(platoDetalleInternal.getArticulo().getId());
+					articulo.setStock(platoDetalleInternal.getArticulo().getStock());
+					articulo.setStockMaximo(platoDetalleInternal.getArticulo().getStockMaximo());
+					articulo.setStockMinimo(platoDetalleInternal.getArticulo().getStockMinimo());
+					articulo.setNombre(platoDetalleInternal.getArticulo().getNombre());
+					articulo.setPrecioCompra(platoDetalleInternal.getArticulo().getPrecioCompra());
+					articulo.setPrecioVenta(platoDetalleInternal.getArticulo().getPrecioVenta());	
+					
+					ArticuloCategoriaDTO articuloCategoria = new ArticuloCategoriaDTO(); 
+					articuloCategoria.setId(platoDetalleInternal.getArticulo().getCategoria().getId());
+					articuloCategoria.setNombre(platoDetalleInternal.getArticulo().getCategoria().getNombre());
+					articuloCategoria.setDescripcion(platoDetalleInternal.getArticulo().getCategoria().getDescripcion());
+					articulo.setCategoria(articuloCategoria);
+					
+					UnidadMedidaDTO unidadMedida = new UnidadMedidaDTO();
+					unidadMedida.setId(platoDetalleInternal.getArticulo().getUnidadMedida().getId());
+					unidadMedida.setNombre(platoDetalleInternal.getArticulo().getUnidadMedida().getNombre());
+					unidadMedida.setAbreviatura(platoDetalleInternal.getArticulo().getUnidadMedida().getAbreviatura());
+					articulo.setUnidadMedida(unidadMedida);
+					
+					platoDetalleDTO.setArticulo(articulo);
+					
+					platoDetalle.add(platoDetalleDTO);
 			}
 			object.setDetalles(platoDetalle);
 			
@@ -93,8 +120,35 @@ public class PlatoService {
 				List<PlatoDetalleDTO> platoDetalle = new ArrayList<>();
 				for(PlatoDetalle platoDetalleInternal : object2.getDetalles()){
 					PlatoDetalleDTO platoDetalleDTO = new PlatoDetalleDTO();
-					platoDetalleDTO.setId(platoDetalleInternal.getId());	platoDetalleDTO.setCantidad(platoDetalleInternal.getCantidad());
-						platoDetalle.add(platoDetalleDTO);
+					platoDetalleDTO.setId(platoDetalleInternal.getId());	
+					platoDetalleDTO.setCantidad(platoDetalleInternal.getCantidad());
+					
+					ArticuloDTO articulo = new ArticuloDTO();
+					articulo.setDescripcion(platoDetalleInternal.getArticulo().getDescripcion());
+					articulo.setEsInsumo(platoDetalleInternal.getArticulo().getEsInsumo());
+					articulo.setId(platoDetalleInternal.getArticulo().getId());
+					articulo.setStock(platoDetalleInternal.getArticulo().getStock());
+					articulo.setStockMaximo(platoDetalleInternal.getArticulo().getStockMaximo());
+					articulo.setStockMinimo(platoDetalleInternal.getArticulo().getStockMinimo());
+					articulo.setNombre(platoDetalleInternal.getArticulo().getNombre());
+					articulo.setPrecioCompra(platoDetalleInternal.getArticulo().getPrecioCompra());
+					articulo.setPrecioVenta(platoDetalleInternal.getArticulo().getPrecioVenta());	
+					
+					ArticuloCategoriaDTO articuloCategoria = new ArticuloCategoriaDTO(); 
+					articuloCategoria.setId(platoDetalleInternal.getArticulo().getCategoria().getId());
+					articuloCategoria.setNombre(platoDetalleInternal.getArticulo().getCategoria().getNombre());
+					articuloCategoria.setDescripcion(platoDetalleInternal.getArticulo().getCategoria().getDescripcion());
+					articulo.setCategoria(articuloCategoria);
+					
+					UnidadMedidaDTO unidadMedida = new UnidadMedidaDTO();
+					unidadMedida.setId(platoDetalleInternal.getArticulo().getUnidadMedida().getId());
+					unidadMedida.setNombre(platoDetalleInternal.getArticulo().getUnidadMedida().getNombre());
+					unidadMedida.setAbreviatura(platoDetalleInternal.getArticulo().getUnidadMedida().getAbreviatura());
+					articulo.setUnidadMedida(unidadMedida);
+					
+					platoDetalleDTO.setArticulo(articulo);
+					
+					platoDetalle.add(platoDetalleDTO);
 			}
 			object.setDetalles(platoDetalle);
 			
