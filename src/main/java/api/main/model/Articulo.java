@@ -34,7 +34,7 @@ public class Articulo{
 	@OneToOne
 	@JoinColumn(name = "fk_posee_medida")
 	private UnidadMedida unidadMedida;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_posee_imagen_articulo")
 	private Imagen imagen;
 	

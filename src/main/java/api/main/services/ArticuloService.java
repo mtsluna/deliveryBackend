@@ -245,6 +245,7 @@ public class ArticuloService {
 		try {
 			Imagen imagen = new Imagen();
 			imagen.setId(articuloDTO.getImagen().getId());
+			imagen.setUrl(articuloDTO.getImagen().getUrl());
 			articulo.setImagen(imagen);
 		
 		} catch(Exception e){
@@ -306,6 +307,7 @@ public class ArticuloService {
 		try {
 			Imagen imagen = new Imagen();
 			imagen.setId(articuloDTO.getImagen().getId());
+			imagen.setUrl(articuloDTO.getImagen().getUrl());
 			articulo.setImagen(imagen);
 		
 		} catch(Exception e){
