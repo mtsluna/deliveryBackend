@@ -12,8 +12,8 @@ public class UsuarioCliente extends Usuario{
 	@Column(name = "usuariocliente_sexo")
 	public String sexo;
 	
-	@OneToMany
-	private List <Comprobante> comprobantes = new ArrayList<>();
+	//@OneToMany
+	//private List <Comprobante> comprobantes = new ArrayList<>();
 	
 	//Constructor
 	public UsuarioCliente() {
@@ -38,14 +38,14 @@ public class UsuarioCliente extends Usuario{
 	}
 	
 	
-	public List<Comprobante> getComprobantes(){
-		return comprobantes;
-	}
+	//public List<Comprobante> getComprobantes(){
+	//	return comprobantes;
+	//}
 	
 	
-	public void setComprobantes(List<Comprobante> comprobantes){
-		this.comprobantes = comprobantes;
-	}
+	//public void setComprobantes(List<Comprobante> comprobantes){
+	//	this.comprobantes = comprobantes;
+	//}
 	
 	
 	

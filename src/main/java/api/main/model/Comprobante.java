@@ -19,6 +19,9 @@ public class Comprobante{
 	private double montoDescuento;
 	@Column(name = "comprobante_total")
 	private double total;
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "fk_posee_usuario")
+	private UsuarioCliente usuariocliente;
 	
 	
 	//Constructor
@@ -57,13 +60,14 @@ public class Comprobante{
 	public double getTotal(){
 		return total;
 	}
-	
-	
-	
-	
-	
-	
-	
+
+	public UsuarioCliente getUsuariocliente() {
+		return usuariocliente;
+	}
+
+	public void setUsuariocliente(UsuarioCliente usuariocliente) {
+		this.usuariocliente = usuariocliente;
+	}
 
 }
 

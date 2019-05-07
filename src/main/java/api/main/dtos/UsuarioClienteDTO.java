@@ -8,8 +8,6 @@ public class UsuarioClienteDTO extends UsuarioDTO implements Serializable{
 	private String fechaNacimiento;
 	public String sexo;
 	
-	private List <ComprobanteDTO> comprobantes = new ArrayList<>();
-	
 	//Constructor
 	public UsuarioClienteDTO() {
 		super();
@@ -30,16 +28,6 @@ public class UsuarioClienteDTO extends UsuarioDTO implements Serializable{
 	
 	public String getSexo(){
 		return sexo;
-	}
-	
-	
-	public List<ComprobanteDTO> getComprobantes(){
-		return comprobantes;
-	}
-	
-	
-	public void setComprobantes(List<ComprobanteDTO> comprobantes){
-		this.comprobantes = comprobantes;
 	}
 	
 	

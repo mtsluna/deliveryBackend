@@ -15,7 +15,7 @@ public class Pedido extends Comprobante{
 	@OneToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "fk_posee_estado")
 	private Estado estado;
-	@OneToMany(cascade = {CascadeType.ALL})
+	@OneToMany(cascade = CascadeType.ALL)
 	private List <Detalle> detalle = new ArrayList<>();
 	
 	//Constructor

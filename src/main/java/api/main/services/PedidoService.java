@@ -34,6 +34,18 @@ public class PedidoService {
 			object.setTotal(object2.getTotal());
 			
 			try {
+				
+				UsuarioClienteDTO user = new UsuarioClienteDTO();
+				user.setId(object2.getUsuariocliente().getId());
+				object.setUsuarioCliente(user);
+				
+			} catch (Exception e) {
+
+				System.out.println(e.getMessage());
+				
+			}
+			
+			try {
 				EstadoDTO estado = new EstadoDTO();
 				estado.setId(object2.getEstado().getId());
 				estado.setNombre(object2.getEstado().getNombre());
@@ -148,6 +160,18 @@ public class PedidoService {
 			object.setFecha(object2.getFecha());
 			object.setMontoDescuento(object2.getMontoDescuento());
 			object.setTotal(object2.getTotal());
+			
+			try {
+				
+				UsuarioClienteDTO user = new UsuarioClienteDTO();
+				user.setId(object2.getUsuariocliente().getId());
+				object.setUsuarioCliente(user);
+				
+			} catch (Exception e) {
+
+				System.out.println(e.getMessage());
+				
+			}
 			
 			try {
 				EstadoDTO estado = new EstadoDTO();
@@ -267,18 +291,15 @@ public class PedidoService {
 		pedido.setTotal(pedidoDTO.getTotal());
 		
 		try {
-			List<Detalle> detalle = new ArrayList<>();
-			for(DetalleDTO detalleDTO : pedidoDTO.getDetalle()){
-				Detalle detalleTemp = new Detalle();
-				detalleTemp.setId(detalleDTO.getId());	
-				detalleTemp.getArticulo().setId(detalleDTO.getArticulo().getId());
-				detalleTemp.getPlato().setId(detalleDTO.getPlato().getId());
-				detalle.add(detalleTemp);
-		}
-		pedido.setDetalle(detalle);
-		
-		} catch(Exception e){
+			
+			UsuarioCliente usuario = new UsuarioCliente();
+			usuario.setId(pedidoDTO.getUsuarioCliente().getId());
+			pedido.setUsuariocliente(usuario);
+			
+		} catch (Exception e) {
+
 			System.out.println(e.getMessage());
+			
 		}
 		
 		try {
@@ -290,14 +311,37 @@ public class PedidoService {
 			System.out.println(e.getMessage());
 		}
 		
-		try {
-			List<Detalle> detalle = new ArrayList<>();
+		List<Detalle> detalle = new ArrayList<>();
+		
+		try {			
 			for(DetalleDTO detalleDTO : pedidoDTO.getDetalle()){
 				Detalle detalleTemp = new Detalle();
-				detalleTemp.setId(detalleDTO.getId());
-			detalle.add(detalleTemp);
-		}
+				detalleTemp.setCantidad(detalleDTO.getCantidad());
+				
+				try{
+					if(detalleDTO.getArticulo() != null) {
+						Articulo articulo = new Articulo();
+						articulo.setId(detalleDTO.getArticulo().getId());
+						detalleTemp.setArticulo(articulo);
+					}
+				} catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+				try {
+					if(detalleDTO.getPlato() != null) {
+						Plato plato = new Plato();
+						plato.setId(detalleDTO.getPlato().getId());
+						detalleTemp.setPlato(plato);
+					}	
+				} catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
+				detalle.add(detalleTemp);
+			}
+			
 		pedido.setDetalle(detalle);
+		
 		} catch(Exception e){
 			System.out.println(e.getMessage());
 		}
@@ -329,6 +373,18 @@ public class PedidoService {
 		pedido.setFecha(pedidoDTO.getFecha());
 		pedido.setMontoDescuento(pedidoDTO.getMontoDescuento());
 		pedido.setTotal(pedidoDTO.getTotal());
+		
+		try {
+			
+			UsuarioCliente usuario = new UsuarioCliente();
+			usuario.setId(pedidoDTO.getUsuarioCliente().getId());
+			pedido.setUsuariocliente(usuario);
+			
+		} catch (Exception e) {
+
+			System.out.println(e.getMessage());
+			
+		}
 		
 		try {
 			Estado estado = new Estado();

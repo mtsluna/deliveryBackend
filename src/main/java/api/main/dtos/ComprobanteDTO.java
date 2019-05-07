@@ -2,6 +2,8 @@ package api.main.dtos;
 import java.io.Serializable;
 import java.util.*;
 
+import api.main.model.UsuarioCliente;
+
 public class ComprobanteDTO implements Serializable{
 	
 	private int id;
@@ -9,6 +11,7 @@ public class ComprobanteDTO implements Serializable{
 	private String fecha;
 	private double montoDescuento;
 	private double total;
+	private UsuarioClienteDTO usuarioCliente;
 	
 	
 	//Constructor
@@ -47,11 +50,14 @@ public class ComprobanteDTO implements Serializable{
 	public double getTotal(){
 		return total;
 	}
-	
-	
-	
-	
-	
+
+	public UsuarioClienteDTO getUsuarioCliente() {
+		return usuarioCliente;
+	}
+
+	public void setUsuarioCliente(UsuarioClienteDTO usuarioCliente) {
+		this.usuarioCliente = usuarioCliente;
+	}
 
 }
 

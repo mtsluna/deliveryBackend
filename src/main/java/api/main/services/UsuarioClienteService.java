@@ -36,6 +36,7 @@ public class UsuarioClienteService {
 			object.setTelefono(object2.getTelefono());
 			object.setPassword(object2.getPassword());
 			
+			/*
 			try {
 				List<ComprobanteDTO> comprobante = new ArrayList<>();
 				for(Comprobante comprobanteInternal : object2.getComprobantes()){
@@ -50,7 +51,8 @@ public class UsuarioClienteService {
 			} catch(Exception e){
 				System.out.println(e.getMessage());
 			}
-			
+			*/
+			/*
 			try {
 				List<ComprobanteDTO> comprobante = new ArrayList<>();
 				for(Comprobante comprobanteInternal : object2.getComprobantes()){
@@ -62,6 +64,7 @@ public class UsuarioClienteService {
 			} catch(Exception e){
 				System.out.println(e.getMessage());
 			}
+			*/
 			
 			try {
 				DomicilioDTO domicilio = new DomicilioDTO();		
@@ -122,6 +125,7 @@ public class UsuarioClienteService {
 			object.setTelefono(object2.getTelefono());
 			object.setPassword(object2.getPassword());
 			
+			/*
 			try {
 				List<ComprobanteDTO> comprobante = new ArrayList<>();
 				for(Comprobante comprobanteInternal : object2.getComprobantes()){
@@ -148,6 +152,7 @@ public class UsuarioClienteService {
 			} catch(Exception e){
 				System.out.println(e.getMessage());
 			}
+			*/
 			
 			try {
 				DomicilioDTO domicilio = new DomicilioDTO();		
@@ -215,7 +220,7 @@ public class UsuarioClienteService {
 			object.setApellido(object2.getApellido());
 			object.setTelefono(object2.getTelefono());
 			object.setPassword(object2.getPassword());
-			
+			/*
 			try {
 				List<ComprobanteDTO> comprobante = new ArrayList<>();
 				for(Comprobante comprobanteInternal : object2.getComprobantes()){
@@ -242,7 +247,7 @@ public class UsuarioClienteService {
 			} catch(Exception e){
 				System.out.println(e.getMessage());
 			}
-			
+			*/
 			try {
 				DomicilioDTO domicilio = new DomicilioDTO();		
 				domicilio.setId(object2.getDomicilio().getId());
@@ -305,7 +310,7 @@ public class UsuarioClienteService {
 		usuarioCliente.setApellido(usuarioClienteDTO.getApellido());
 		usuarioCliente.setTelefono(usuarioClienteDTO.getTelefono());
 		usuarioCliente.setPassword(usuarioClienteDTO.getPassword());
-		
+		/*
 		try {
 			List<Comprobante> comprobante = new ArrayList<>();
 			for(ComprobanteDTO comprobanteDTO : usuarioClienteDTO.getComprobantes()){
@@ -329,7 +334,7 @@ public class UsuarioClienteService {
 		} catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-		
+		*/
 		try {
 			Domicilio domicilio = new Domicilio();
 			domicilio.setId(usuarioClienteDTO.getDomicilio().getId());
@@ -390,7 +395,7 @@ public class UsuarioClienteService {
 		usuarioCliente.setApellido(usuarioClienteDTO.getApellido());
 		usuarioCliente.setTelefono(usuarioClienteDTO.getTelefono());
 		usuarioCliente.setPassword(usuarioClienteDTO.getPassword());
-		
+		/*
 		try {
 			List<Comprobante> comprobante = new ArrayList<>();
 			for(ComprobanteDTO comprobanteDTO : usuarioClienteDTO.getComprobantes()){
@@ -414,7 +419,7 @@ public class UsuarioClienteService {
 		} catch(Exception e){
 			System.out.println(e.getMessage());
 		}
-		
+		*/
 		try {
 			Domicilio domicilio = new Domicilio();
 			domicilio.setId(usuarioClienteDTO.getDomicilio().getId());
