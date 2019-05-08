@@ -164,3 +164,89 @@ En caso de que no posea rol devuelve:
   "rol": "null"
 }
 ```
+
+**Listar pedidos por usuario**
+
+Petición HTTP:
+```
+curl -GET https://apirestdelivery.herokuapp.com/api/v1/pedido/byUser/{id}
+```
+
+Respuesta:
+```json
+[
+  {
+      "id": 262,
+      "fecha": "2019-05-02 09:01",
+      "montoDescuento": 50,
+      "total": 500,
+      "usuarioCliente": {
+          "id": 35,
+          "email": null,
+          "dni": null,
+          "nombre": null,
+          "apellido": null,
+          "telefono": 0,
+          "password": null,
+          "domicilio": null,
+          "imagen": null,
+          "fechaNacimiento": null,
+          "sexo": null
+      },
+      "horaEstimadaFin": "2019-05-02 09:31",
+      "tipoEnvio": "delivery",
+      "estado": {
+          "id": 2,
+          "nombre": "En cocina"
+      },
+      "detalle": [
+          {
+              "id": 172,
+              "cantidad": 1,
+              "plato": null,
+              "articulo": {
+                  "id": 1,
+                  "nombre": "Falopa",
+                  "descripcion": "harina Peruana",
+                  "precioCompra": 255,
+                  "stock": 10,
+                  "stockMinimo": 10,
+                  "stockMaximo": 50,
+                  "esInsumo": true,
+                  "precioVenta": 0,
+                  "categoria": null,
+                  "unidadMedida": {
+                      "id": 1,
+                      "nombre": "kilo",
+                      "abreviatura": "KG"
+                  },
+                  "imagen": null
+              }
+          },
+          {
+              "id": 182,
+              "cantidad": 1,
+              "plato": null,
+              "articulo": {
+                  "id": 5,
+                  "nombre": "Sal Fina",
+                  "descripcion": "Sal Fina",
+                  "precioCompra": 25,
+                  "stock": 10,
+                  "stockMinimo": 15,
+                  "stockMaximo": 25,
+                  "esInsumo": true,
+                  "precioVenta": 0,
+                  "categoria": null,
+                  "unidadMedida": {
+                      "id": 2,
+                      "nombre": "Gramos",
+                      "abreviatura": "grs"
+                  },
+                  "imagen": null
+              }
+          }
+      ]
+    }
+]
+```
