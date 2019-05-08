@@ -39,6 +39,14 @@ public class PedidoController {
 		return ResponseEntity.status(200).body(pedidoService.getAll()).getBody();
 		
 	}
+	
+	@GetMapping("/byUser/{id}")
+	@CrossOrigin(origins = "*")
+	public List<PedidoDTO> getAllByUser(@PathVariable int id) {
+		
+		return ResponseEntity.status(200).body(pedidoService.getAllByUser(id)).getBody();
+		
+	}
 
 	/**
 	 * This method return only entity 'Pedido' that match with the id in the database

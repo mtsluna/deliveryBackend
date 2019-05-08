@@ -141,6 +141,134 @@ public class PedidoService {
 		return result;
 	
 	}
+	
+	/**
+	 * This method transform all entities 'Pedido' in 'PedidoDTO' in the database where email match
+	 * @return entities 'Pedido' transformed in 'Pedido'DTO (Data transference Object)
+	 * @since 1.0
+	 */
+	public List<PedidoDTO> getAllByUser(int id) {
+	
+		List<PedidoDTO> result = new ArrayList<>();
+	
+		for(Pedido object2 : pedidoRepository.getAllByUser(id)){
+			PedidoDTO object = new PedidoDTO();
+			object.setId(object2.getId());
+			object.setHoraEstimadaFin(object2.getHoraEstimadaFin());
+			object.setTipoEnvio(object2.getTipoEnvio());
+			object.setFecha(object2.getFecha());
+			object.setMontoDescuento(object2.getMontoDescuento());
+			object.setTotal(object2.getTotal());
+			
+			try {
+				
+				UsuarioClienteDTO user = new UsuarioClienteDTO();
+				user.setId(object2.getUsuariocliente().getId());
+				object.setUsuarioCliente(user);
+				
+			} catch (Exception e) {
+
+				System.out.println(e.getMessage());
+				
+			}
+			
+			try {
+				EstadoDTO estado = new EstadoDTO();
+				estado.setId(object2.getEstado().getId());
+				estado.setNombre(object2.getEstado().getNombre());
+				object.setEstado(estado);
+			
+			} catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+			
+			try {
+				List<DetalleDTO> detalle = new ArrayList<>();
+				for(Detalle detalleInternal : object2.getDetalle()){
+					DetalleDTO detalleDTO = new DetalleDTO();
+					detalleDTO.setId(detalleInternal.getId());	
+					detalleDTO.setCantidad(detalleInternal.getCantidad());			
+					
+					if(detalleInternal.getArticulo() != null) {
+					
+						ArticuloDTO articulo = new ArticuloDTO();
+						articulo.setDescripcion(detalleInternal.getArticulo().getDescripcion());
+						articulo.setEsInsumo(detalleInternal.getArticulo().getEsInsumo());
+						articulo.setId(detalleInternal.getArticulo().getId());
+						articulo.setStock(detalleInternal.getArticulo().getStock());
+						articulo.setStockMaximo(detalleInternal.getArticulo().getStockMaximo());
+						articulo.setStockMinimo(detalleInternal.getArticulo().getStockMinimo());
+						articulo.setNombre(detalleInternal.getArticulo().getNombre());
+						articulo.setPrecioCompra(detalleInternal.getArticulo().getPrecioCompra());
+						articulo.setPrecioVenta(detalleInternal.getArticulo().getPrecioVenta());					
+						UnidadMedidaDTO unidadMedida = new UnidadMedidaDTO();
+						unidadMedida.setId(detalleInternal.getArticulo().getUnidadMedida().getId());
+						unidadMedida.setNombre(detalleInternal.getArticulo().getUnidadMedida().getNombre());
+						unidadMedida.setAbreviatura(detalleInternal.getArticulo().getUnidadMedida().getAbreviatura());
+						articulo.setUnidadMedida(unidadMedida);					
+						detalleDTO.setArticulo(articulo);
+					
+					}					
+					
+					if(detalleInternal.getPlato() != null) {
+					
+						PlatoDTO plato = new PlatoDTO();
+						plato.setId(detalleInternal.getPlato().getId());
+						plato.setNombre(detalleInternal.getPlato().getNombre());
+						plato.setTiempoPreparacion(detalleInternal.getPlato().getTiempoPreparacion());
+						
+						List<PlatoDetalleDTO> detallesPlato = new ArrayList<>();
+						for(PlatoDetalle platoDetalleInternal : detalleInternal.getPlato().getDetalles()) {							
+							PlatoDetalleDTO temp = new PlatoDetalleDTO();
+							temp.setId(platoDetalleInternal.getId());
+							temp.setCantidad(platoDetalleInternal.getCantidad());							
+							ArticuloDTO articuloDetalle = new ArticuloDTO();
+							articuloDetalle.setDescripcion(platoDetalleInternal.getArticulo().getDescripcion());
+							articuloDetalle.setEsInsumo(platoDetalleInternal.getArticulo().getEsInsumo());
+							articuloDetalle.setId(platoDetalleInternal.getArticulo().getId());
+							articuloDetalle.setStock(platoDetalleInternal.getArticulo().getStock());
+							articuloDetalle.setStockMaximo(platoDetalleInternal.getArticulo().getStockMaximo());
+							articuloDetalle.setStockMinimo(platoDetalleInternal.getArticulo().getStockMinimo());
+							articuloDetalle.setNombre(platoDetalleInternal.getArticulo().getNombre());
+							articuloDetalle.setPrecioCompra(platoDetalleInternal.getArticulo().getPrecioCompra());
+							articuloDetalle.setPrecioVenta(platoDetalleInternal.getArticulo().getPrecioVenta());							
+							ArticuloCategoriaDTO articuloCategoria = new ArticuloCategoriaDTO(); 
+							articuloCategoria.setId(platoDetalleInternal.getArticulo().getCategoria().getId());
+							articuloCategoria.setNombre(platoDetalleInternal.getArticulo().getCategoria().getNombre());
+							articuloCategoria.setDescripcion(platoDetalleInternal.getArticulo().getCategoria().getDescripcion());
+							articuloDetalle.setCategoria(articuloCategoria);							
+							UnidadMedidaDTO unidadMedidaDetalle = new UnidadMedidaDTO();
+							unidadMedidaDetalle.setId(platoDetalleInternal.getArticulo().getUnidadMedida().getId());
+							unidadMedidaDetalle.setNombre(platoDetalleInternal.getArticulo().getUnidadMedida().getNombre());
+							unidadMedidaDetalle.setAbreviatura(platoDetalleInternal.getArticulo().getUnidadMedida().getAbreviatura());
+							articuloDetalle.setUnidadMedida(unidadMedidaDetalle);
+							
+							temp.setArticulo(articuloDetalle);
+							
+							detallesPlato.add(temp);
+						}
+						
+						plato.setDetalles(detallesPlato);	
+						
+						detalleDTO.setPlato(plato);
+					
+					}
+					
+					detalle.add(detalleDTO);
+			}
+			object.setDetalle(detalle);
+			
+			} catch(Exception e){
+				System.out.println(e.getMessage());
+			}	
+			
+			result.add(object);		
+		}
+	
+		return result;
+	
+	}
+	
 	/**
 	 * This method transform an entity 'Pedido' in 'PedidoDTO' in the database
 	 * @return entity 'Pedido' transformed in 'PedidoDTO' (Data transference Object)
