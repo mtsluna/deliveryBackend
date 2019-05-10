@@ -16,12 +16,12 @@ public class Plato{
 	@Column(name = "plato_tiempopreparacion")
 	private String tiempoPreparacion;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List <PlatoDetalle> detalles = new ArrayList<>();
 	@OneToOne
 	@JoinColumn(name = "fk_posee_categoria")
 	private PlatoCategoria categoria;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_posee_imagen_plato")
 	private Imagen imagen;
 	

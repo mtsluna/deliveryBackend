@@ -207,7 +207,13 @@ public class PlatoService {
 			List<PlatoDetalle> platoDetalle = new ArrayList<>();
 			for(PlatoDetalleDTO platoDetalleDTO : platoDTO.getDetalles()){
 				PlatoDetalle platoDetalleTemp = new PlatoDetalle();
-				platoDetalleTemp.setId(platoDetalleDTO.getId());	platoDetalle.add(platoDetalleTemp);
+				platoDetalleTemp.setCantidad(platoDetalleDTO.getCantidad());
+				
+				Articulo articulo = new Articulo();
+				articulo.setId(platoDetalleDTO.getArticulo().getId());
+				platoDetalleTemp.setArticulo(articulo);
+				
+				platoDetalle.add(platoDetalleTemp);
 		}
 		plato.setDetalles(platoDetalle);
 		
@@ -226,7 +232,7 @@ public class PlatoService {
 		
 		try {
 			Imagen imagen = new Imagen();
-			imagen.setId(platoDTO.getImagen().getId());
+			imagen.setUrl(platoDTO.getImagen().getUrl());
 			plato.setImagen(imagen);
 		
 		} catch(Exception e){
