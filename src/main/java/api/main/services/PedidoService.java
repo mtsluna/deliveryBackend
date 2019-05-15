@@ -3,16 +3,22 @@ import java.util.*;
 import org.springframework.stereotype.Service;
 import api.main.dtos.*;
 import api.main.model.*;
+import api.main.repositories.ArticuloRepository;
 import api.main.repositories.PedidoRepository;
+import api.main.repositories.PlatoRepository;
 
 
 @Service
 public class PedidoService {
 	
 	private PedidoRepository pedidoRepository;
+	private ArticuloRepository articuloRepository;
+	private PlatoRepository platoRepository;
 
-	public PedidoService(PedidoRepository pedidoRepository){
+	public PedidoService(PedidoRepository pedidoRepository, ArticuloRepository articuloRepository, PlatoRepository platoRepository){
 		this.pedidoRepository = pedidoRepository;
+		this.articuloRepository = articuloRepository;
+		this.platoRepository = platoRepository;
 	}
 
 	/**
@@ -449,7 +455,12 @@ public class PedidoService {
 				try{
 					if(detalleDTO.getArticulo() != null) {
 						Articulo articulo = new Articulo();
-						articulo.setId(detalleDTO.getArticulo().getId());
+						
+						//Proceso de stock
+						articulo = articuloRepository.findById(detalleDTO.getArticulo().getId()).get();
+						articulo.setStock((articulo.getStock())-(detalleDTO.getCantidad()));
+												
+						articuloRepository.save(articulo);	
 						detalleTemp.setArticulo(articulo);
 					}
 				} catch(Exception e) {
@@ -458,6 +469,19 @@ public class PedidoService {
 				try {
 					if(detalleDTO.getPlato() != null) {
 						Plato plato = new Plato();
+						
+						//Proceso de stock
+						plato = platoRepository.findById(detalleDTO.getPlato().getId()).get();
+						System.out.println(plato.getId());
+						for (PlatoDetalle platoDetalle : plato.getDetalles()) {
+							
+							Articulo articulo = new Articulo();
+							articulo = articuloRepository.findById(platoDetalle.getArticulo().getId()).get();
+							articulo.setStock((articulo.getStock())-((detalleDTO.getCantidad())*(platoDetalle.getCantidad())));
+							articuloRepository.save(articulo);
+							
+						}
+						
 						plato.setId(detalleDTO.getPlato().getId());
 						detalleTemp.setPlato(plato);
 					}	
