@@ -15,6 +15,8 @@ public class Plato{
 	private String nombre;
 	@Column(name = "plato_tiempopreparacion")
 	private String tiempoPreparacion;
+	@Column(name = "plato_precio")
+	private double precio;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private List <PlatoDetalle> detalles = new ArrayList<>();
@@ -54,7 +56,14 @@ public class Plato{
 		return tiempoPreparacion;
 	}
 	
-	
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
 	public List<PlatoDetalle> getDetalles(){
 		return detalles;
 	}

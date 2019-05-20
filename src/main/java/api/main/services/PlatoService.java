@@ -29,6 +29,12 @@ public class PlatoService {
 			object.setId(object2.getId());
 			object.setNombre(object2.getNombre());
 			object.setTiempoPreparacion(object2.getTiempoPreparacion());
+			try {
+				object.setPrecio(object2.getPrecio());
+			} catch(Exception e) {
+				System.out.println("vacio");
+			}
+			
 			
 			try {
 				List<PlatoDetalleDTO> platoDetalle = new ArrayList<>();
@@ -115,6 +121,11 @@ public class PlatoService {
 			object.setId(object2.getId());
 			object.setNombre(object2.getNombre());
 			object.setTiempoPreparacion(object2.getTiempoPreparacion());
+			try {
+				object.setPrecio(object2.getPrecio());
+			} catch(Exception e) {
+				System.out.println("vacio");
+			}
 			
 			try {
 				List<PlatoDetalleDTO> platoDetalle = new ArrayList<>();
@@ -202,6 +213,7 @@ public class PlatoService {
 		
 		plato.setNombre(platoDTO.getNombre());
 		plato.setTiempoPreparacion(platoDTO.getTiempoPreparacion());
+		plato.setPrecio(platoDTO.getPrecio());
 		
 		try {
 			List<PlatoDetalle> platoDetalle = new ArrayList<>();
@@ -266,6 +278,7 @@ public class PlatoService {
 	
 		plato.setNombre(platoDTO.getNombre());
 		plato.setTiempoPreparacion(platoDTO.getTiempoPreparacion());
+		plato.setPrecio(platoDTO.getPrecio());
 		
 		try {
 			List<PlatoDetalle> platoDetalle = new ArrayList<>();

@@ -8,6 +8,7 @@ public class PlatoDTO implements Serializable{
 	
 	private String nombre;
 	private String tiempoPreparacion;
+	private double precio;
 	
 	private List <PlatoDetalleDTO> detalles = new ArrayList<>();
 	private PlatoCategoriaDTO categoria;
@@ -42,7 +43,14 @@ public class PlatoDTO implements Serializable{
 		return tiempoPreparacion;
 	}
 	
-	
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
 	public List<PlatoDetalleDTO> getDetalles(){
 		return detalles;
 	}
