@@ -1,5 +1,6 @@
 package api.main.services;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import org.springframework.stereotype.Service;
 import api.main.dtos.*;
@@ -30,13 +31,13 @@ public class UsuarioAvanzadoService {
 		for (UsuarioAvanzado object2 : usuarioAvanzadoRepository.findAll()) {
 			UsuarioAvanzadoDTO object = new UsuarioAvanzadoDTO();
 			object.setId(object2.getId());
-			object.setFechaAlta(object2.getFechaAlta());
 			object.setEmail(object2.getEmail());
 			object.setDni(object2.getDni());
 			object.setNombre(object2.getNombre());
 			object.setApellido(object2.getApellido());
 			object.setTelefono(object2.getTelefono());
 			object.setPassword(object2.getPassword());
+			object.setAlta(object2.getAlta());
 
 			try {
 				RolDTO rol = new RolDTO();
@@ -99,13 +100,13 @@ public class UsuarioAvanzadoService {
 
 			UsuarioAvanzado object2 = aOptional.get();
 			object.setId(object2.getId());
-			object.setFechaAlta(object2.getFechaAlta());
 			object.setEmail(object2.getEmail());
 			object.setDni(object2.getDni());
 			object.setNombre(object2.getNombre());
 			object.setApellido(object2.getApellido());
 			object.setTelefono(object2.getTelefono());
 			object.setPassword(object2.getPassword());
+			object.setAlta(object2.getAlta());
 
 			try {
 				RolDTO rol = new RolDTO();
@@ -167,13 +168,18 @@ public class UsuarioAvanzadoService {
 
 		UsuarioAvanzado usuarioAvanzado = new UsuarioAvanzado();
 
-		usuarioAvanzado.setFechaAlta(usuarioAvanzadoDTO.getFechaAlta());
 		usuarioAvanzado.setEmail(usuarioAvanzadoDTO.getEmail());
 		usuarioAvanzado.setDni(usuarioAvanzadoDTO.getDni());
 		usuarioAvanzado.setNombre(usuarioAvanzadoDTO.getNombre());
 		usuarioAvanzado.setApellido(usuarioAvanzadoDTO.getApellido());
 		usuarioAvanzado.setTelefono(usuarioAvanzadoDTO.getTelefono());
 		usuarioAvanzado.setPassword(usuarioAvanzadoDTO.getPassword());
+		
+		//FECHA DE ALTA				
+		Locale locale = new Locale("es", "AR");
+		SimpleDateFormat sdf = new SimpleDateFormat("d/MM/yyyy", locale);
+		sdf.format(new Date());
+		usuarioAvanzado.setAlta(sdf.format(new Date()));		
 
 		try {
 			Rol rol = new Rol();
@@ -237,14 +243,12 @@ public class UsuarioAvanzadoService {
 
 			usuarioAvanzado = optional.get();
 
-			usuarioAvanzado.setFechaAlta(usuarioAvanzadoDTO.getFechaAlta());
 			usuarioAvanzado.setEmail(usuarioAvanzadoDTO.getEmail());
 			usuarioAvanzado.setDni(usuarioAvanzadoDTO.getDni());
 			usuarioAvanzado.setNombre(usuarioAvanzadoDTO.getNombre());
 			usuarioAvanzado.setApellido(usuarioAvanzadoDTO.getApellido());
 			usuarioAvanzado.setTelefono(usuarioAvanzadoDTO.getTelefono());
 			usuarioAvanzado.setPassword(usuarioAvanzadoDTO.getPassword());
-
 			try {
 				Rol rol = new Rol();
 				rol.setId(usuarioAvanzadoDTO.getRol().getId());

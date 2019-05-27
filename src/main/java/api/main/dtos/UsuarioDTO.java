@@ -12,7 +12,7 @@ public class UsuarioDTO implements Serializable{
 	private String apellido;
 	private double telefono;
 	private String password;
-	
+	private String alta;	
 	private DomicilioDTO domicilio;
 	private ImagenDTO imagen;
 	
@@ -77,7 +77,14 @@ public class UsuarioDTO implements Serializable{
 		return password;
 	}
 	
-	
+	public String getAlta() {
+		return alta;
+	}
+
+	public void setAlta(String alta) {
+		this.alta = alta;
+	}
+
 	public DomicilioDTO getDomicilio(){
 		return domicilio;
 	}

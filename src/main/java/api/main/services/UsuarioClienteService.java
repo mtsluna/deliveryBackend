@@ -1,4 +1,5 @@
 package api.main.services;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import org.springframework.stereotype.Service;
 import api.main.dtos.*;
@@ -35,6 +36,7 @@ public class UsuarioClienteService {
 			object.setApellido(object2.getApellido());
 			object.setTelefono(object2.getTelefono());
 			object.setPassword(object2.getPassword());
+			object.setAlta(object2.getAlta());
 			
 			/*
 			try {
@@ -124,6 +126,7 @@ public class UsuarioClienteService {
 			object.setApellido(object2.getApellido());
 			object.setTelefono(object2.getTelefono());
 			object.setPassword(object2.getPassword());
+			object.setAlta(object2.getAlta());
 			
 			/*
 			try {
@@ -220,6 +223,8 @@ public class UsuarioClienteService {
 			object.setApellido(object2.getApellido());
 			object.setTelefono(object2.getTelefono());
 			object.setPassword(object2.getPassword());
+			object.setAlta(object2.getAlta());
+			
 			/*
 			try {
 				List<ComprobanteDTO> comprobante = new ArrayList<>();
@@ -310,6 +315,13 @@ public class UsuarioClienteService {
 		usuarioCliente.setApellido(usuarioClienteDTO.getApellido());
 		usuarioCliente.setTelefono(usuarioClienteDTO.getTelefono());
 		usuarioCliente.setPassword(usuarioClienteDTO.getPassword());
+		
+		//FECHA DE ALTA				
+		Locale locale = new Locale("es", "AR");
+		SimpleDateFormat sdf = new SimpleDateFormat("d/MM/yyyy", locale);
+		sdf.format(new Date());
+		usuarioCliente.setAlta(sdf.format(new Date()));
+		
 		/*
 		try {
 			List<Comprobante> comprobante = new ArrayList<>();
@@ -395,6 +407,7 @@ public class UsuarioClienteService {
 		usuarioCliente.setApellido(usuarioClienteDTO.getApellido());
 		usuarioCliente.setTelefono(usuarioClienteDTO.getTelefono());
 		usuarioCliente.setPassword(usuarioClienteDTO.getPassword());
+		
 		/*
 		try {
 			List<Comprobante> comprobante = new ArrayList<>();

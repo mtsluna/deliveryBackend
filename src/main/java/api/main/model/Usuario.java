@@ -25,6 +25,8 @@ public class Usuario{
 	private double telefono;
 	@Column(name = "usuario_password")
 	private String password;
+	@Column(name = "usuario_alta")
+	private String alta;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "fk_posee_domicilio")
@@ -94,7 +96,14 @@ public class Usuario{
 		return password;
 	}
 	
-	
+	public String getAlta() {
+		return alta;
+	}
+
+	public void setAlta(String alta) {
+		this.alta = alta;
+	}
+
 	public Domicilio getDomicilio(){
 		return domicilio;
 	}
