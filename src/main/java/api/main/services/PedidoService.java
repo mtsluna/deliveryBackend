@@ -351,6 +351,7 @@ public class PedidoService {
 						plato.setId(detalleInternal.getPlato().getId());
 						plato.setNombre(detalleInternal.getPlato().getNombre());
 						plato.setTiempoPreparacion(detalleInternal.getPlato().getTiempoPreparacion());
+						plato.setPrecio(detalleInternal.getPlato().getPrecio());
 						
 						List<PlatoDetalleDTO> detallesPlato = new ArrayList<>();
 						for(PlatoDetalle platoDetalleInternal : detalleInternal.getPlato().getDetalles()) {							
