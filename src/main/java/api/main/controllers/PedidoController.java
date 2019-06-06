@@ -120,6 +120,16 @@ public class PedidoController {
 		}
 		
 	}
+	
+	@PutMapping("changeStatus/{id}/{status}")
+	@CrossOrigin(origins = "*")
+	public ResponseEntity update(@RequestBody PedidoDTO t, @PathVariable("id") int id, @PathVariable("status") int status) {
+		
+		PedidoDTO temp = pedidoService.updateEstado(t, id, status);
+		
+		return ResponseEntity.status(201).body(temp);			
+		
+	}
 
 	/**
 	 * This method delete an entity 'Pedido' in the database

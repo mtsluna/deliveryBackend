@@ -1,4 +1,6 @@
 package api.main.services;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import org.springframework.stereotype.Service;
 import api.main.dtos.*;
@@ -512,6 +514,49 @@ public class PedidoService {
 	 * @return entities 'PedidoDTO'.
 	 * @since 1.0
 	 */
+	
+	public PedidoDTO updateEstado(PedidoDTO pedidoDTO, int id, int estado) {
+		
+		Optional<Pedido> optional = pedidoRepository.findById(id);
+		Pedido pedido = new Pedido();
+		
+		try {
+			
+			pedido = optional.get();
+			
+			Estado estadoObj = new Estado();
+			estadoObj.setId(estado);
+			pedido.setEstado(estadoObj);
+			
+			if (estado == 22) {
+				String sDate1= pedido.getHoraEstimadaFin();  
+			    Date date1=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sDate1);  
+			    //System.out.println(sDate1+"\t"+date1);  
+			    
+			    Calendar calendar = Calendar.getInstance();
+			    calendar.setTime(date1);
+			    calendar.add(Calendar.MINUTE, 10);
+			    Date fechaSalida = calendar.getTime();
+			    
+			    Format f = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			    String strDate = f.format(fechaSalida);
+			    //System.out.println("resultado"+strDate);
+			    
+			    pedido.setHoraEstimadaFin(strDate);
+			}
+			
+			pedidoRepository.save(pedido);
+			
+		} catch (Exception e) {
+			
+			
+			
+		}
+		
+		return pedidoDTO;
+		
+	}
+	
 	public PedidoDTO update(PedidoDTO pedidoDTO, int id) {
 		
 		Optional<Pedido> optional = pedidoRepository.findById(id);
@@ -539,7 +584,6 @@ public class PedidoService {
 			
 		}
 		
-		
 		try {
 			Estado estado = new Estado();
 			estado.setId(pedidoDTO.getEstado().getId());
@@ -555,7 +599,7 @@ public class PedidoService {
 				Detalle detalleTemp = new Detalle();
 				detalleTemp.setId(detalleDTO.getId());	detalle.add(detalleTemp);
 		}
-		pedido.setDetalle(detalle);
+		pedido.setDetalle(pedido.getDetalle());
 		
 		} catch(Exception e){
 			System.out.println(e.getMessage());
